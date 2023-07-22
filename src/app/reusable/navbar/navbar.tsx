@@ -14,13 +14,13 @@ const Navbar: FC<NavBarProps | undefined> = (props: NavBarProps | undefined) => 
     
 
 
-    return <div>
-        <div className="flex flex-row space-between start mb-2 wrap">
-            <p>R-Chat</p>
+    return(
+        <nav className="flex flex-row space-between start wrap border">
+            <p className="ml-1">R-Chat</p>
             <p>{props?.roomName ? props.roomName : ""}</p>
             <NavBarProfile user={user} />
-        </div>
-    </div>
+        </nav>
+    )
 }
 
 export default Navbar
