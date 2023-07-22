@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, useEffect, useState } from "react"
+import { FC, useState } from "react"
 import styles from "./login.module.css"
 import Loading from "./loading"
 import Link from "next/link"
@@ -22,7 +22,7 @@ const Login: FC = () => {
             },
             mode: 'no-cors',
             body: JSON.stringify({
-                
+
                 username: username,
                 password: password
             }),
@@ -43,35 +43,39 @@ const Login: FC = () => {
 
 
     return (
-        <div className={styles["login-page"]}>
-            <h1>R-CHAT</h1>
+        <div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}>
+        <div className={styles["login-page"] + " border"}>
+            <h1>Iniciar Sessão</h1>
             {loading && <Loading />}
-            {!loading && error &&
-                <div>
-                    <p>Username ou Password Inválidos</p>
-                </div>
-            }
-            {!loading &&
-                <div>
+            <div className="" style={{height: "fit-content", width:"100%",display:"flex",justifyContent:"center"}}>
+                {!loading && error &&
                     <div>
-                        <div className={styles["login-input"]}>
-                            <label htmlFor="username">Username:</label>
-                            <input placeholder="Introduza o seu username"value={username} id="username" type="text" onChange={e => setUsername(e.target.value)}></input>
-                        </div>
-                        <div className={styles["login-input"]}>
-                            <label htmlFor="password">Password:</label>
-                            <input placeholder="Introduza a sua password"value={password} id="password" type="password" onChange={e => setPassword(e.target.value)}></input>
-                        </div>
+                        <p>Username ou Password Inválidos</p>
                     </div>
+                }
+                {!loading &&
+                    <div className={styles["login-form"]}>
+                        <div>
+                            <div className={styles["login-input"]}>
+                                <label htmlFor="username">Username:</label>
+                                <input autoComplete="nope" placeholder="Introduza o seu username" value={username} id="username" type="text" onChange={e => setUsername(e.target.value)}></input>
+                            </div>
+                            <div className={styles["login-input"]}>
+                                <label htmlFor="password">Password:</label>
+                                <input placeholder="Introduza a sua password" value={password} id="password" type="password" onChange={e => setPassword(e.target.value)}></input>
+                            </div>
+                        </div>
 
-                    <div className={styles["login-form-buttons"]}>
-                        <button type="button" onClick={login}>Login</button>
-                        <button type="button"><Link href="register">Registar</Link></button>
-                        <button style={{ marginTop: "5px" }} type="button"><Link href="https://facebook.com"><FaFacebook /></Link></button>
-                        <button style={{ marginTop: "5px" }} type="button"><Link href="https://google.com"><FaGoogle /></Link></button>
+                        <div className={styles["login-form-buttons"]}>
+                            <button type="button" onClick={login}>Login</button>
+                            <button type="button"><Link href="register">Registar</Link></button>
+                            <button style={{ marginTop: "5px" }} type="button"><Link href="https://facebook.com"><FaFacebook /></Link></button>
+                            <button style={{ marginTop: "5px" }} type="button"><Link href="https://google.com"><FaGoogle /></Link></button>
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
+        </div>
         </div>
     )
 }
