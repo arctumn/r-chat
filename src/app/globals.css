@@ -1,10 +1,13 @@
 html {
     width: 100%;
+    min-width: 300px;
     height: 100%;
     background: linear-gradient(#845EC2,#D65DB1,#FF6F91);
     overflow: hidden;
 }
-
+body {
+    height: 100%;
+}
 * {
     
     color: white;
@@ -100,4 +103,10 @@ html {
 
 .ml-2 {
     margin-left: 16px;
+}
+.border {
+    border:solid 1px;
+    border-radius: 1em;
+    border-color: rgb(255, 255, 255,0.1);
+    background-color: rgb(255, 255, 255,0.1);
 }
